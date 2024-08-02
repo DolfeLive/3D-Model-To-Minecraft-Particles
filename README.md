@@ -16,6 +16,17 @@ Can **seriously** hurt mspt and tps
 
 In the directory type `pip install -r requirements.txt`
 
+Open 3DtoParticle.py and edit the:
+
+```python
+vertices, tex_coords = parse_ply_ascii('put in the 3d model file here')
+texture_image = 'the texture of the 3d model'
+
+# The size of the model compared to the minecarft world
+# Requires testing to get used to how it affects the model
+scale_factor =  2
+```
+
 Run in terminal `py 3DtoParticle.py` 
 
 Next in terminal run `py main.py`
