@@ -1,4 +1,4 @@
-# Minecraft Datapack To Commands
+# 3D Model To Minecraft Particles
 
 A Project that turns ply 3d models into 3d models out of particles in minecraft
 
