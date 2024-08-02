@@ -1,6 +1,13 @@
 import numpy as np
 from PIL import Image
 
+vertices, tex_coords = parse_ply_ascii('v1.ply')
+texture_image = 'v1.png'
+
+# The size of the model compared to the minecarft world
+# Requires testing to get used to how it affects the model
+scale_factor =  2
+
 def parse_ply_ascii(file_path):
     vertices = []
     tex_coords = []
@@ -12,12 +19,12 @@ def parse_ply_ascii(file_path):
                     header = False
             else:
                 parts = line.split()
-                if len(parts) >= 8:  # Ensure there are x, y, z, s, t values
+                if len(parts) >= 8:
                     vertices.append([float(parts[0]), float(parts[1]), float(parts[2])])
-                    tex_coords.append([float(parts[6]), float(parts[7])])  # Assuming s, t are the 7th and 8th columns
+                    tex_coords.append([float(parts[6]), float(parts[7])])
     vertices = np.array(vertices)
     tex_coords = np.array(tex_coords)
-    print(f"Number of vertices: {len(vertices)}")  # Debugging line
+    print(f"Number of vertices: {len(vertices)}")
     return vertices, tex_coords
 
 def normalize_and_scale_vertices(vertices, scale):
@@ -33,11 +40,9 @@ def sample_texture_color(texture_image, uv_coords):
     img = img.convert('RGB')
     width, height = img.size
     
-    # Convert UV coordinates to pixel coordinates
     x = int(uv_coords[0] * width)
-    y = int((1 - uv_coords[1]) * height)  # Invert Y axis for image coordinates
+    y = int((1 - uv_coords[1]) * height)
 
-    # Clamp coordinates to image size
     x = max(0, min(x, width - 1))
     y = max(0, min(y, height - 1))
     
@@ -53,22 +58,10 @@ def generate_particle_commands(vertices, tex_coords, texture_image, scale=1.0):
         commands.append(f"particle minecraft:dust {r} {g} {b} {scale} ~{x} ~{y} ~{z} 0 0 0 0 1 force @a")
     return commands
 
-# Replace 'path/to/your/model_ascii.ply' with the actual path to your ASCII PLY file
-# Replace 'path/to/your/texture.png' with the path to your texture image
-vertices, tex_coords = parse_ply_ascii('v1.ply')
-texture_image = 'v1.png'
-
-# Define the scale factor: 1 Blender meter = 0.01 Minecraft blocks
-scale_factor =  2
-
-# Normalize and scale the vertices
 scaled_vertices = normalize_and_scale_vertices(vertices, scale_factor)
-
-# Generate particle commands with the scaled vertices and sampled colors
 commands = generate_particle_commands(scaled_vertices, tex_coords, texture_image, scale=1.0)
 
-# Save the commands to a text file
 with open('commands.txt', 'w') as file:
     file.write('\n'.join(commands))
 
-print("Particle commands have been saved to commands.txt")
+print("Particle commands have been saved")
