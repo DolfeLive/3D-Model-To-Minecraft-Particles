@@ -41,4 +41,4 @@ Spawn a armor stand and add a tag to it (Can be anything like player, mobs, ect 
 
 Hook up all of the command blocks together and power them
 
-<img src="Images/icon.png">
+<img src="model_in_blender.png">
