@@ -1,8 +1,8 @@
 import numpy as np
 from PIL import Image
 
-vertices, tex_coords = parse_ply_ascii('v1.ply')
-texture_image = 'v1.png'
+vertices, tex_coords = parse_ply_ascii('put in the 3d model file here')
+texture_image = 'the texture of the 3d model'
 
 # The size of the model compared to the minecarft world
 # Requires testing to get used to how it affects the model
