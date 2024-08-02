@@ -16,7 +16,7 @@ Can **seriously** hurt mspt and tps
 
 In the directory type `pip install -r requirements.txt`
 
-Use **[Particle converter](https://github.com/kemo14331/Particle-Converter/tree/main)** and set the mode to Relative Local then configure everything
+Run in terminal `py 3DtoParticle.py` 
 
 Next open the exported .mcfunction and copy its contents to commands.txt Empty lines and line with # will be ignored
 
