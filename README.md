@@ -16,6 +16,8 @@ Can **seriously** hurt mspt and tps
 
 In the directory type `pip install -r requirements.txt`
 
+In blender make sure to export the 3d model as ascii and ply
+
 Open 3DtoParticle.py and edit the:
 
 ```python
