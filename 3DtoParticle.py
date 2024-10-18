@@ -1,7 +1,7 @@
 import numpy as np
 from PIL import Image
 
-3dModelLocation = 'put it here'
+_3dModelLocation = 'put it here'
 texture_image = 'the texture of the 3d model'
 
 # The size of the model compared to the minecarft world
@@ -58,7 +58,7 @@ def generate_particle_commands(vertices, tex_coords, texture_image, scale=1.0):
         commands.append(f"particle minecraft:dust {r} {g} {b} {scale} ~{x} ~{y} ~{z} 0 0 0 0 1 force @a")
     return commands
 
-vertices, tex_coords = parse_ply_ascii(3dModelLocation)
+vertices, tex_coords = parse_ply_ascii(_3dModelLocation)
 
 scaled_vertices = normalize_and_scale_vertices(vertices, scale_factor)
 commands = generate_particle_commands(scaled_vertices, tex_coords, texture_image, scale=1.0)
