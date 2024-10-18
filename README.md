@@ -14,7 +14,7 @@ Can **seriously** hurt mspt and tps
 
 # How to use:
 
-In the directory type `pip install -r requirements.txt`
+In the directory type `pip install -r req.txt`
 
 In blender make sure to export the 3d model as ascii and ply
 
